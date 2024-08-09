@@ -20,7 +20,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # https://gitlab.kitware.com/cmake/cmake/-/issues/18837
 if (MSVC)
     add_compile_options(/Zc:__cplusplus)
-  endif()
+
+    # https://devblogs.microsoft.com/cppblog/announcing-full-support-for-a-c-c-conformant-preprocessor-in-msvc/
+    add_compile_options(/Zc:preprocessor)
+endif()
 
 if( APPLE AND NOT IOS )
 	set( CMAKE_CXX_FLAGS "-ObjC++" )
