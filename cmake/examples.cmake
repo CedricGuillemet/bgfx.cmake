@@ -161,7 +161,7 @@ function( add_example ARG_NAME )
 		if( BGFX_CUSTOM_TARGETS )
 			add_dependencies( examples example-${ARG_NAME} )
 		endif()
-		if( IOS )
+		if( IOS OR VISIONOS )
 			set_target_properties(example-${ARG_NAME} PROPERTIES MACOSX_BUNDLE ON
 													  MACOSX_BUNDLE_GUI_IDENTIFIER example-${ARG_NAME}
 													  MACOSX_BUNDLE_BUNDLE_VERSION 0
@@ -172,7 +172,7 @@ function( add_example ARG_NAME )
 	target_compile_definitions( example-${ARG_NAME} PRIVATE "-D_CRT_SECURE_NO_WARNINGS" "-D__STDC_FORMAT_MACROS" "-DENTRY_CONFIG_IMPLEMENT_MAIN=1" )
 
 	# Configure shaders
-	if( NOT ARG_COMMON AND NOT IOS AND NOT EMSCRIPTEN AND NOT ANDROID)
+	if( NOT ARG_COMMON AND NOT IOS AND NOT VISIONOS AND NOT EMSCRIPTEN AND NOT ANDROID)
 		foreach( SHADER ${SHADERS} )
 			add_bgfx_shader( ${SHADER} ${ARG_NAME} )
 		endforeach()
