@@ -21,7 +21,7 @@ target_sources( bgfx-shader-spirv INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/generate
 target_include_directories( bgfx-shader-spirv INTERFACE ${BGFX_DIR}/include )
 
 # Frameworks required on OS X
-if( APPLE AND NOT IOS)
+if( APPLE AND NOT IOS AND NOT VISIONOS)
 	find_library( COCOA_LIBRARY Cocoa )
 	mark_as_advanced( COCOA_LIBRARY )
 	target_link_libraries( bgfx-vertexdecl INTERFACE ${COCOA_LIBRARY} )

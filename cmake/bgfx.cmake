@@ -125,7 +125,7 @@ target_include_directories( bgfx
 target_link_libraries( bgfx PUBLIC bx bimg )
 
 # Frameworks required on iOS, tvOS and macOS
-if( ${CMAKE_SYSTEM_NAME} MATCHES iOS|tvOS )
+if( ${CMAKE_SYSTEM_NAME} MATCHES iOS|tvOS|visionOS )
 	target_link_libraries (bgfx PUBLIC 
 		"-framework OpenGLES -framework Metal -framework UIKit -framework CoreGraphics -framework QuartzCore -framework IOKit -framework CoreFoundation")
 elseif( APPLE )
